@@ -1,6 +1,10 @@
 package view;
 
 import javax.swing.*;
+
+import model.entity.Employee;
+import model.repository.Repository;
+import model.service.Service;
 import net.miginfocom.swing.*;
 
 import java.awt.event.ActionEvent;
@@ -73,10 +77,17 @@ public class EmpUI extends JFrame {
             }
         });
 
+
         //ActionListener
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try {
+                    Service.getInstance().save(new Employee().setName(textField1.getText()).setFamily(textField3.getText()).setFatherName(textField4.getText()).setNumber(textField5.getText()).setAge(Integer.parseInt(textField6.getText())));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
             }
         });
